@@ -2,18 +2,23 @@
 
 -- If on WINDOWS.
 if (package.config:sub(1,1) == '\\') then
-    print("Building Deps")
+
+    -- Build GLFW.
+    os.execute("cd depedencies/GLFW && cmake ../../LearnOpenGL/GLFW")
+
+    -- Build ASSIMP.
+    os.execute("cd depedencies/ASSIMP && cmake ../../LearnOpenGL/ASSIMP")
 
 
 -- On Unix Systems.
 else
 
     -- Build GLFW.
-    os.execute("cd depedencies/GLFW && ccmake ../../LearnOpenGL/GLFW")
+    os.execute("cd depedencies/GLFW && cmake ../../LearnOpenGL/GLFW")
     os.execute("cd depedencies/GLFW && make")
 
     -- Build ASSIMP.
-    os.execute("cd depedencies/ASSIMP && ccmake ../../LearnOpenGL/ASSIMP")
+    os.execute("cd depedencies/ASSIMP && cmake ../../LearnOpenGL/ASSIMP")
     os.execute("cd depedencies/ASSIMP && make")
 
 end
@@ -29,12 +34,27 @@ workspace "LearnOpenGL"
     platforms "x64"
     architecture "x86_64"
     language "C++"
+	
+	
+	
+	-- You the /MDd and /MD option for all projects.
+	filter {"system:windows", "configurations:Debug"}
+		buildoptions{
+			"/MDd",
+		}
+	filter {"system:windows", "configurations:Release"}
+		buildoptions{
+			"/MD",
+		}
+	filter {}
+	
+	
 
 
     -- ==================GLAD Project================== --
     project "GLAD"
         removeconfigurations "Release"
-        kind "SharedLib"
+        kind "StaticLib"
         targetdir "bin/%{cfg.shortname}"
         objdir "bin-int/%{prj.name}_%{cfg.shortname}"
 
@@ -56,7 +76,7 @@ workspace "LearnOpenGL"
     -- ==================STB_IMAGE Project================== --
     project "STB_IMAGE"
         removeconfigurations "Release"
-        kind "SharedLib"
+        kind "StaticLib"
         targetdir "bin/%{cfg.shortname}"
         objdir "bin-int/%{prj.name}_%{cfg.shortname}"
 
@@ -98,8 +118,11 @@ workspace "LearnOpenGL"
 
         libdirs{
             "depedencies/GLFW/src",
+			"depedencies/GLFW/src/Debug",
             "depedencies/ASSIMP/bin",
+			"depedencies/ASSIMP/lib/Debug",
             "bin/%{cfg.shortname}"
+			
         }
 
         links{
@@ -113,6 +136,13 @@ workspace "LearnOpenGL"
                 "glfw",
                 "GL",
                 "assimp"
+            }
+			
+		-- WINDOWS Links.
+        filter "system:windows"
+            links{
+                "glfw3",
+				"assimp-vc142-mtd"
             }
      -- ==================LearnOpenGL Project================== --
 

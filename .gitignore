@@ -15,3 +15,15 @@ GLAD.make
 LearnOpenGL.make
 Makefile
 STB_IMAGE.make
+
+#Visual Studio GLAD project.
+.vs/
+GLAD.vcxproj
+GLAD.vcxproj.filters
+GLAD.vcxproj.user
+
+#Visual Studio LearnOpenGL and STB_IMAGE projects and solution.
+LearnOpenGL.sln
+LearnOpenGL.vcxproj
+LearnOpenGL.vcxproj.user
+STB_IMAGE.vcxproj
