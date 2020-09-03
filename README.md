@@ -26,8 +26,9 @@ make
 ## Build for Windows (Visual Studio)
 This is a little more compilated.
 
-```cd <inside_the_root_directory_of_this_repository>```
-`premake5 vs2019` (if you want you can run premake5 with another visual studio target: **example: premake5 vs2017**)
+```
+cd <inside_the_root_directory_of_this_repository>
+premake5 vs2019``` (if you want you can run premake5 with another visual studio target: **example: premake5 vs2017**)
 
 Then open depedencies/GLFW/GLFW.sln and compile GLFW by right click the **GLFW** project and select BUILD.
 Then open depedencies/ASSIMP/Assimp.sln and compile ASSIMP by right click the **BUILD_ALL** project and select BUILD.
