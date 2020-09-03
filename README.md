@@ -3,7 +3,7 @@
 The root directory of this repository from now on will be refered as **${HOME}** .
 
 ## Depedencies
-[cmake](https://cmake.org/download/) and [premake5](https://premake.github.io/) Project generator tools).
+[cmake](https://cmake.org/download/) and [premake5](https://premake.github.io/) (Project generator tools).
 
 Install them and add them to your **PATH** variable.
 
