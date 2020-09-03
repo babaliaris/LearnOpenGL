@@ -2,6 +2,8 @@
 
 The root directory of this repository from now on will be refered as **${HOME}** .
 
+This is a project for my personal "self taught" OpenGL by following the [Awesome LearOpenGL Course](https://learnopengl.com/)
+
 ## Depedencies
 [cmake](https://cmake.org/download/) and [premake5](https://premake.github.io/) (Project generator tools).
 
