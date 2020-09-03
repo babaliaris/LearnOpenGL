@@ -1,0 +1,17 @@
+#Project Binaries and Intermidiates.
+bin/
+bin-int/
+
+#Assimp Binaries (but keep the folder)
+depedencies/ASSIMP/**
+!depedencies/ASSIMP/.gitkeep
+
+#GLFW Binaries (but keep the folder)
+depedencies/GLFW/**
+!depedencies/GLFW/.gitkeep
+
+#Premake generated makefiles.
+GLAD.make
+LearnOpenGL.make
+Makefile
+STB_IMAGE.make

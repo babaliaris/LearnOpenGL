@@ -1,0 +1,9 @@
+[submodule "LearnOpenGL/GLFW"]
+	path = LearnOpenGL/GLFW
+	url = https://github.com/glfw/glfw.git
+[submodule "LearnOpenGL/GLM"]
+	path = LearnOpenGL/GLM
+	url = https://github.com/g-truc/glm.git
+[submodule "LearnOpenGL/ASSIMP"]
+	path = LearnOpenGL/ASSIMP
+	url = https://github.com/assimp/assimp.git
