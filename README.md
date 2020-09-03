@@ -49,7 +49,7 @@ Then open **${HOME}/depedencies/ASSIMP/Assimp.sln** and compile ASSIMP by right 
 ## Running The App on Windows.
 Finally you can open the **${HOME}/LearnOpenGL.sln** solution and compile it by right click the **LearnOpenGL** project and select BUILD.
 
-Then *COPY* the file **${HOME}/depedensies/ASSIMP/bin/Debug/assimp-vc142-mtd.dll** into the **${HOME}/bin/debug_x64/**
+Then *COPY* the file **${HOME}/depedencies/ASSIMP/bin/Debug/assimp-vc142-mtd.dll** into the **${HOME}/bin/debug_x64/**
 
 Do not forget to set the **LearnOpenGL** project as the **StartUp** project (Right click the project and select set as Start Up Project).
 
