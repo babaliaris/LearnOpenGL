@@ -32,8 +32,11 @@ premake5 vs2019
 ``` 
 (if you want you can run premake5 with another visual studio target: **example: premake5 vs2017**)
 
-Then open depedencies/GLFW/GLFW.sln and compile GLFW by right click the **GLFW** project and select BUILD.
-Then open depedencies/ASSIMP/Assimp.sln and compile ASSIMP by right click the **BUILD_ALL** project and select BUILD.
+### Compile GLFW
+Then open **depedencies/GLFW/GLFW.sln** and compile GLFW by right click the **GLFW** project and select BUILD.
+
+### Compile Assimp
+Then open **depedencies/ASSIMP/Assimp.sln** and compile ASSIMP by right click the **BUILD_ALL** project and select BUILD.
 
 Finally you can open the LearnOpenGL.sln solution and compile it by right click the **LearnOpenGL** project and select BUILD.
 
