@@ -16,15 +16,17 @@ you did not add them to your **PATH**.
 ### The flag `--recurse-submodules` is **important**!!!
 
 ## Build for Linux
-`cd <inside_the_root_directory_of_this_repository>`
-`premake5 gmake`
-`make`
+```
+cd <inside_the_root_directory_of_this_repository>
+premake5 gmake
+make
+```
 
 
 ## Build for Windows (Visual Studio)
 This is a little more compilated.
 
-`cd <inside_the_root_directory_of_this_repository>`
+```cd <inside_the_root_directory_of_this_repository>```
 `premake5 vs2019` (if you want you can run premake5 with another visual studio target: **example: premake5 vs2017**)
 
 Then open depedencies/GLFW/GLFW.sln and compile GLFW by right click the **GLFW** project and select BUILD.
