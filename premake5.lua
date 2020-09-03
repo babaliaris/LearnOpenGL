@@ -133,8 +133,10 @@ workspace "LearnOpenGL"
         -- Linux Links.
         filter "system:linux"
             links{
-                "glfw",
+                "glfw3",
                 "GL",
+                "dl",
+                "pthread",
                 "assimp"
             }
 			
@@ -147,3 +149,18 @@ workspace "LearnOpenGL"
      -- ==================LearnOpenGL Project================== --
 
 -- ==================LearnOpenGL WorkSpace================== --
+
+
+-- If on WINDOWS.
+if (package.config:sub(1,1) == '\\') then
+    print("")
+
+
+-- On Linux.
+else
+    print("")
+    print("===================|FINISHED GENERATING PROJECTS|===================")
+    print("Run 'make' to build LearnOpenGL")
+    print("===================|FINISHED GENERATING PROJECTS|===================")
+    print("")
+end
