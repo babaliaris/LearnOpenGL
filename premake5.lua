@@ -1,3 +1,28 @@
+-- ********************Build External Depedencies ********************--
+
+-- If on WINDOWS.
+if (package.config:sub(1,1) == '\\') then
+    print("Building Deps")
+
+
+-- On Unix Systems.
+else
+
+    -- Build GLFW.
+    os.execute("cd depedencies/GLFW && ccmake ../../LearnOpenGL/GLFW")
+    os.execute("cd depedencies/GLFW && make")
+
+    -- Build ASSIMP.
+    os.execute("cd depedencies/ASSIMP && ccmake ../../LearnOpenGL/ASSIMP")
+    os.execute("cd depedencies/ASSIMP && make")
+
+end
+-- ********************Build External Depedencies ********************--
+
+
+
+
+
 -- ==================LearnOpenGL WorkSpace================== --
 workspace "LearnOpenGL"
     configurations {"Debug", "Release"}
