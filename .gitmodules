@@ -7,3 +7,6 @@
 [submodule "LearnOpenGL/ASSIMP"]
 	path = LearnOpenGL/ASSIMP
 	url = https://github.com/assimp/assimp.git
+[submodule "LearnOpenGL/SPDLOG"]
+	path = LearnOpenGL/SPDLOG
+	url = https://github.com/gabime/spdlog.git

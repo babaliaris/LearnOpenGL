@@ -1,19 +1,67 @@
 #include <iostream>
-#include <glad/glad.h>
-#include <GLFW/glfw3.h>
-#include <stb_image.h>
-#include <glm/glm.hpp>
-#include <assimp/Importer.hpp>
+#define ENGINE_ENTRY_POINT
+#include "Engine.h"
 
-int main(void)
+
+class MyLayer : public Engine::Layer
 {
+    public:
+
+    MyLayer()
+    {
+
+    }
+
+    ~MyLayer()
+    {
+
+    }
+
+    void OnAttach() override
+    {
+    }
+
+    void OnUpdate() override
+    {
+    }
+};
+
+
+class LearnOpenGL : public Engine::Application
+{
+    public:
+    
+    LearnOpenGL()
+    {
+        PushLayer(new MyLayer());
+    }
+
+
+    ~LearnOpenGL()
+    {
+
+    }
+};
+
+
+Engine::Application *Engine::createApp()
+{
+    return new LearnOpenGL();
+}
+
+
+
+
+
+
+    /*
     GLFWwindow* window;
 
-    /* Initialize the library */
+    
     if (!glfwInit())
         return -1;
 
-    /* Create a windowed mode window and its OpenGL context */
+    
     window = glfwCreateWindow(640, 480, "Hello World", NULL, NULL);
     if (!window)
     {
@@ -21,7 +69,7 @@ int main(void)
         return -1;
     }
 
-    /* Make the window's context current */
+    
     glfwMakeContextCurrent(window);
 
     int status = gladLoadGLLoader((GLADloadproc)glfwGetProcAddress);
@@ -38,19 +86,18 @@ int main(void)
     }
 
 
-    /* Loop until the user closes the window */
+
     while (!glfwWindowShouldClose(window))
     {
-        /* Render here */
+
         glClear(GL_COLOR_BUFFER_BIT);
 
-        /* Swap front and back buffers */
+
         glfwSwapBuffers(window);
 
-        /* Poll for and process events */
+
         glfwPollEvents();
     }
 
     glfwTerminate();
-    return 0;
-}
+    */

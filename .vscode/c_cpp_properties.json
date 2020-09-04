@@ -7,7 +7,13 @@
                 "/usr/include/**",
                 "/usr/local/include/",
                 "/usr/local/include/**",
-                "${workspaceFolder}/**"
+                "${workspaceFolder}/LearnOpenGL/LearnOpenGL/src",
+                "${workspaceFolder}/LearnOpenGL/ASSIMP/include",
+                "${workspaceFolder}/LearnOpenGL/GLAD/include",
+                "${workspaceFolder}/LearnOpenGL/GLFW/include",
+                "${workspaceFolder}/LearnOpenGL/GLM",
+                "${workspaceFolder}/LearnOpenGL/SPDLOG/include",
+                "${workspaceFolder}/LearnOpenGL/STB_IMAGE"
             ],
             "defines": [],
             "compilerPath": "/usr/bin/clang",

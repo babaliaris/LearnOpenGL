@@ -99,6 +99,11 @@ workspace "LearnOpenGL"
         targetdir "bin/%{cfg.shortname}"
         objdir "bin-int/%{prj.name}_%{cfg.shortname}"
 
+        -- Add precompiled header.
+        pchheader "%{wks.name}/%{prj.name}/src/engine/pch.h"
+        pchsource "%{wks.name}/%{prj.name}/src/engine/pch.cpp"
+
+        -- Source Files.
         files {
             "%{wks.name}/%{prj.name}/src/**.cpp",
             "%{wks.name}/%{prj.name}/src/**.hpp",
@@ -106,6 +111,7 @@ workspace "LearnOpenGL"
             "%{wks.name}/%{prj.name}/src/**.c"
         }
 
+        --Include Directories.
         includedirs{
             "%{wks.name}/%{prj.name}/src",
             "%{wks.name}/GLFW/include",
@@ -114,8 +120,10 @@ workspace "LearnOpenGL"
             "%{wks.name}/GLM/",
             "depedencies/ASSIMP/include",
             "%{wks.name}/ASSIMP/include",
+            "%{wks.name}/SPDLOG/include",
         }
 
+        -- Library Directories.
         libdirs{
             "depedencies/GLFW/src",
 			"depedencies/GLFW/src/Debug",
@@ -125,12 +133,13 @@ workspace "LearnOpenGL"
 			
         }
 
+        -- Links.
         links{
             "GLAD",
             "STB_IMAGE"
         }
 
-        -- Linux Links.
+        -- Linux.
         filter "system:linux"
             links{
                 "glfw3",
@@ -140,11 +149,15 @@ workspace "LearnOpenGL"
                 "assimp"
             }
 			
-		-- WINDOWS Links.
+		-- WINDOWS.
         filter "system:windows"
             links{
                 "glfw3",
 				"assimp-vc142-mtd"
+            }
+
+            defines{
+                "ENGINE_WINDOWS"
             }
      -- ==================LearnOpenGL Project================== --
 
