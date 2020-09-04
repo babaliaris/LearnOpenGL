@@ -19,10 +19,21 @@ class MyLayer : public Engine::Layer
 
     void OnAttach() override
     {
+
     }
 
     void OnUpdate() override
     {
+    }
+
+    
+    void OnEvent(Engine::Event &e)
+    {
+        if (e.GetType() == Engine::EventType::mouseMoved)
+        {
+            Engine::MouseMovedEvent &event= *(Engine::MouseMovedEvent *)&e;
+            LOG_ERROR("{0} , {1}", event.GetX(), event.GetY());
+        }
     }
 };
 

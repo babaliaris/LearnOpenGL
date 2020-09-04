@@ -6,6 +6,7 @@
 #include "engine/Core.h"
 #include "engine/Layer.h"
 #include "engine/Logger.h"
+#include "engine/Events.h"
 
 
 //--------------------ENTRY POINT--------------------//

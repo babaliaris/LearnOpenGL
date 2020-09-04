@@ -2,14 +2,19 @@
 #include "Window.h"
 #include "Logger.h"
 #include "Core.h"
+#include "Events.h"
 #include <glad/glad.h>
 #include <GLFW/glfw3.h>
 
 namespace Engine
 {
     Window::Window(const std::string title, unsigned int width, unsigned int height)
-        : m_title(title), m_width(width), m_height(height)
     {
+        
+        //Initialize Window Data.
+        m_WindowData.m_title  = title;
+        m_WindowData.m_width  = width;
+        m_WindowData.m_height = height;
 
         //Initialize GLFW.
         int status = glfwInit();
@@ -30,6 +35,9 @@ namespace Engine
         //Initialize GLAD.
         status = gladLoadGLLoader((GLADloadproc)glfwGetProcAddress);
         ASSERT(status, "GLAD Failed to initialize.");
+
+        //Bind Events.
+        this->BindEvents();
         
     }
 
@@ -43,6 +51,73 @@ namespace Engine
     {
         glfwPollEvents();
         glfwSwapBuffers(m_GLFWwindow);
+    }
+
+
+
+
+    void Window::BindEvents()
+    {
+
+
+        //Bind Key Events.
+        glfwSetKeyCallback(m_GLFWwindow, [](GLFWwindow *window, int key, int scan, int action, int mods)
+        {
+            WindowData *data = (WindowData *)glfwGetWindowUserPointer(window);
+
+            switch (action)
+            {
+
+                case GLFW_PRESS:
+                {
+                    KeyPressedEvent e(key);
+                    data->EventCallback(data->m_context, e);
+                    break;
+                }
+
+
+                case GLFW_RELEASE:
+                {
+                    KeyReleasedEvent e(key);
+                    data->EventCallback(data->m_context, e);
+                    break;
+                }
+
+
+                case GLFW_REPEAT:
+                {
+                    KeyRepeatEvent e(key);
+                    data->EventCallback(data->m_context, e);
+                    break;
+                }
+                
+                default:
+                    break;
+            }
+        });
+
+
+
+
+        glfwSetWindowCloseCallback(m_GLFWwindow, [](GLFWwindow *window)
+        {
+            WindowData *data = (WindowData *)glfwGetWindowUserPointer(window);
+
+            WindowClosedEvent e;
+
+            data->EventCallback(data->m_context, e);
+        });
+
+
+
+        glfwSetCursorPosCallback(m_GLFWwindow, [](GLFWwindow *window, double x, double y)
+        {
+            WindowData *data = (WindowData *)glfwGetWindowUserPointer(window);
+
+            MouseMovedEvent e((float)x, (float)y);
+
+            data->EventCallback(data->m_context, e);
+        });
     }
 
 

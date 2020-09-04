@@ -28,3 +28,9 @@ void Engine::Layer::OnUpdate()
 {
     
 }
+
+
+void Engine::Layer::OnEvent(Event &e)
+{
+    
+}

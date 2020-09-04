@@ -3,6 +3,8 @@
 
 namespace Engine
 {
+    class Event;
+
     class Layer
     {
         public:
@@ -13,6 +15,7 @@ namespace Engine
         virtual void OnAttach();
         virtual void OnDetach();
         virtual void OnUpdate();
+        virtual void OnEvent(Event &e);
     };
 }
 
