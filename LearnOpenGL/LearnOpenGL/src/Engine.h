@@ -1,7 +1,6 @@
 #ifndef ENGINE_ENGINE_H
 #define ENGINE_ENGINE_H
 
-#include "engine/pch.h"
 #include "engine/Application.h"
 #include "engine/Core.h"
 #include "engine/Layer.h"

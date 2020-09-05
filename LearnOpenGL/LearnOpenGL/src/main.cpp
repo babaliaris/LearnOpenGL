@@ -1,6 +1,7 @@
-#include <iostream>
+#include "pch.h"
 #define ENGINE_ENTRY_POINT
 #include "Engine.h"
+#include <iostream>
 
 
 class MyLayer : public Engine::Layer
@@ -65,56 +66,3 @@ Engine::Application *Engine::createApp()
 {
     return new LearnOpenGL();
 }
-
-
-
-
-
-
-    /*
-    GLFWwindow* window;
-
-    
-    if (!glfwInit())
-        return -1;
-
-    
-    window = glfwCreateWindow(640, 480, "Hello World", NULL, NULL);
-    if (!window)
-    {
-        glfwTerminate();
-        return -1;
-    }
-
-    
-    glfwMakeContextCurrent(window);
-
-    int status = gladLoadGLLoader((GLADloadproc)glfwGetProcAddress);
-    if (!status)
-    {
-        std::cout << "GLAD failed to initialize" << std::endl;
-        glfwTerminate();
-        return -1;
-    }
-
-    else
-    {
-        std::cout << "All GOOD" << std::endl;
-    }
-
-
-
-    while (!glfwWindowShouldClose(window))
-    {
-
-        glClear(GL_COLOR_BUFFER_BIT);
-
-
-        glfwSwapBuffers(window);
-
-
-        glfwPollEvents();
-    }
-
-    glfwTerminate();
-    */

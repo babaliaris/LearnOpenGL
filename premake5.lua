@@ -100,8 +100,8 @@ workspace "LearnOpenGL"
         objdir "bin-int/%{prj.name}_%{cfg.shortname}"
 
         -- Add precompiled header.
-        pchheader "%{wks.name}/%{prj.name}/src/engine/pch.h"
-        pchsource "%{wks.name}/%{prj.name}/src/engine/pch.cpp"
+        pchheader "pch.h"
+        pchsource "%{wks.name}/%{prj.name}/src/pch.cpp"
 
         -- Source Files.
         files {
@@ -153,7 +153,8 @@ workspace "LearnOpenGL"
         filter "system:windows"
             links{
                 "glfw3",
-				"assimp-vc142-mtd"
+				"assimp-vc142-mtd",
+				"opengl32"
             }
 
             defines{
