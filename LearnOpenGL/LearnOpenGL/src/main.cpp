@@ -29,11 +29,16 @@ class MyLayer : public Engine::Layer
     
     void OnEvent(Engine::Event &e)
     {
-        if (e.GetType() == Engine::EventType::mouseMoved)
-        {
-            Engine::MouseMovedEvent &event= *(Engine::MouseMovedEvent *)&e;
-            LOG_ERROR("{0} , {1}", event.GetX(), event.GetY());
-        }
+        Engine::Dispatcher dispatcher(e);
+
+
+        dispatcher.Dispatch<Engine::WindowResizedEvent>( std::bind(&MyLayer::OnResize, this, std::placeholders::_1) );
+
+    }
+
+    void OnResize(Engine::WindowResizedEvent &e)
+    {
+        LOG_INFO("{0} , {1}", e.GetX(), e.GetY());
     }
 };
 
@@ -44,7 +49,8 @@ class LearnOpenGL : public Engine::Application
     
     LearnOpenGL()
     {
-        PushLayer(new MyLayer());
+        Engine::Layer *layer = new MyLayer();
+        PushLayer(layer);
     }
 
 

@@ -118,6 +118,54 @@ namespace Engine
 
             data->EventCallback(data->m_context, e);
         });
+
+
+        glfwSetMouseButtonCallback(m_GLFWwindow, [](GLFWwindow *window, int button, int action, int mods)
+        {
+            WindowData *data = (WindowData *)glfwGetWindowUserPointer(window);
+
+            switch (action)
+            {
+
+                case GLFW_PRESS:
+                {
+                    MousePressedEvent e(button);
+                    data->EventCallback(data->m_context, e);
+                    break;
+                }
+
+
+                case GLFW_RELEASE:
+                {
+                    MouseReleasedEvent e(button);
+                    data->EventCallback(data->m_context, e);
+                    break;
+                }
+                
+                default:
+                    break;
+            }
+        });
+
+
+        glfwSetScrollCallback(m_GLFWwindow, [](GLFWwindow *window, double x, double y)
+        {
+            WindowData *data = (WindowData *)glfwGetWindowUserPointer(window);
+
+            MouseScrolledEvent e((float)x, (float)y);
+
+            data->EventCallback(data->m_context, e);
+        });
+
+
+        glfwSetWindowSizeCallback(m_GLFWwindow, [](GLFWwindow *window, int x, int y)
+        {
+            WindowData *data = (WindowData *)glfwGetWindowUserPointer(window);
+
+            WindowResizedEvent e(x, y);
+
+            data->EventCallback(data->m_context, e);
+        });
     }
 
 

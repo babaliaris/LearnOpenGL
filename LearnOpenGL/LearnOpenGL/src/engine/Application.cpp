@@ -43,8 +43,12 @@ void Engine::Application::Run()
     {
         glClear(GL_COLOR_BUFFER_BIT);
         
+        //Run all the enabled layers.
         for (Layer *layer : m_layers)
-            layer->OnUpdate();
+        {
+            if (!layer->m_disabled)
+                layer->OnUpdate();
+        }
 
         m_window->Update();
     }
@@ -67,9 +71,12 @@ void Engine::Application::EventsCallback(Event &e)
     if (e.GetType() == EventType::windowClosedEvent)
         m_running = false;
 
-    //Forward all the events to the layers.
+    //Forward all the events to the enabled layers.
     for (int i = m_layers.size() - 1; i >=0; i--)
-        m_layers[i]->OnEvent(e);
+    {
+        if (!m_layers[i]->m_disabled)
+            m_layers[i]->OnEvent(e);
+    }
 }
 
 

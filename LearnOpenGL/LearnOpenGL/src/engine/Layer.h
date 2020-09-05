@@ -4,9 +4,12 @@
 namespace Engine
 {
     class Event;
+    class Application;
 
     class Layer
     {
+        friend class Application;
+
         public:
         
         Layer();
@@ -16,6 +19,12 @@ namespace Engine
         virtual void OnDetach();
         virtual void OnUpdate();
         virtual void OnEvent(Event &e);
+
+        inline void setDisable(bool value){ m_disabled=value; }
+
+
+        private:
+        bool m_disabled = false;
     };
 }
 
