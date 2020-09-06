@@ -1,5 +1,6 @@
 #ifndef ENGINE_CORE_H
 #define ENGINE_CORE_H
+#include "Logger.h"
 
 #define ASSERT_FORMAT(x, formatter, ...)\
 {\
@@ -23,5 +24,19 @@
         abort();\
     }\
 }
+
+
+
+
+//Visual Studio.
+#ifdef _MSC_BUILD
+    #define RUNTIME_DIR ""
+
+//Other Environments.
+#else
+    #define RUNTIME_DIR "LearnOpenGL/LearnOpenGL/"
+
+#endif
+
 
 #endif

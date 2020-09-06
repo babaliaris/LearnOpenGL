@@ -36,6 +36,12 @@ namespace Engine
         status = gladLoadGLLoader((GLADloadproc)glfwGetProcAddress);
         ASSERT(status, "GLAD Failed to initialize.");
 
+        //Initialize the ViewPort.
+        glViewport(0, 0, width, height);
+
+        //eNABLE Depth Test.
+        glEnable(GL_DEPTH_TEST);
+
         //Bind Events.
         this->BindEvents();
         

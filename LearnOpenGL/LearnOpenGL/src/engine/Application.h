@@ -34,12 +34,20 @@ namespace Engine
         //Run.
         void Run();
 
+        //Get window.
+        const Window& GetWindow() const; 
+
         //Push Layer.
         void PushLayer(Layer *);
+
+        //-------------Inline Methods-------------//
+        static inline const Application& Get() { return *m_instance; }
 
 
 
         private:
+
+        static Application *m_instance;
 
         std::vector<Layer*> m_layers;
 

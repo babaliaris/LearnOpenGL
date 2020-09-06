@@ -98,6 +98,7 @@ workspace "LearnOpenGL"
         kind "ConsoleApp"
         targetdir "bin/%{cfg.shortname}"
         objdir "bin-int/%{prj.name}_%{cfg.shortname}"
+        symbols "On"
 
         -- Add precompiled header.
         pchheader "pch.h"
