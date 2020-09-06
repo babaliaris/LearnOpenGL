@@ -25,5 +25,6 @@ GLAD.vcxproj.user
 #Visual Studio LearnOpenGL and STB_IMAGE projects and solution.
 LearnOpenGL.sln
 LearnOpenGL.vcxproj
+#LearnOpenGL.vcxproj.filters
 LearnOpenGL.vcxproj.user
 STB_IMAGE.vcxproj
