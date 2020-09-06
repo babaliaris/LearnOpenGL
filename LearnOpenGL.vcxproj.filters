@@ -4,6 +4,9 @@
     <Filter Include="engine">
       <UniqueIdentifier>{FBDB78FB-E77D-A3D1-D038-B725BC792A22}</UniqueIdentifier>
     </Filter>
+    <Filter Include="engine\Graphics">
+      <UniqueIdentifier>{9B4EEF7D-07DA-5C42-10EB-DF367CF5B842}</UniqueIdentifier>
+    </Filter>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="LearnOpenGL\LearnOpenGL\src\Engine.h" />
@@ -19,10 +22,25 @@
     <ClInclude Include="LearnOpenGL\LearnOpenGL\src\engine\Events.h">
       <Filter>engine</Filter>
     </ClInclude>
+    <ClInclude Include="LearnOpenGL\LearnOpenGL\src\engine\Graphics.h">
+      <Filter>engine</Filter>
+    </ClInclude>
+    <ClInclude Include="LearnOpenGL\LearnOpenGL\src\engine\Graphics\cube.h">
+      <Filter>engine\Graphics</Filter>
+    </ClInclude>
     <ClInclude Include="LearnOpenGL\LearnOpenGL\src\engine\Layer.h">
       <Filter>engine</Filter>
     </ClInclude>
     <ClInclude Include="LearnOpenGL\LearnOpenGL\src\engine\Logger.h">
+      <Filter>engine</Filter>
+    </ClInclude>
+    <ClInclude Include="LearnOpenGL\LearnOpenGL\src\engine\Mesh.h">
+      <Filter>engine</Filter>
+    </ClInclude>
+    <ClInclude Include="LearnOpenGL\LearnOpenGL\src\engine\Shader.h">
+      <Filter>engine</Filter>
+    </ClInclude>
+    <ClInclude Include="LearnOpenGL\LearnOpenGL\src\engine\Texture.h">
       <Filter>engine</Filter>
     </ClInclude>
     <ClInclude Include="LearnOpenGL\LearnOpenGL\src\engine\Window.h">
@@ -34,10 +52,25 @@
     <ClCompile Include="LearnOpenGL\LearnOpenGL\src\engine\Application.cpp">
       <Filter>engine</Filter>
     </ClCompile>
+    <ClCompile Include="LearnOpenGL\LearnOpenGL\src\engine\Graphics.cpp">
+      <Filter>engine</Filter>
+    </ClCompile>
+    <ClCompile Include="LearnOpenGL\LearnOpenGL\src\engine\Graphics\cube.cpp">
+      <Filter>engine\Graphics</Filter>
+    </ClCompile>
     <ClCompile Include="LearnOpenGL\LearnOpenGL\src\engine\Layer.cpp">
       <Filter>engine</Filter>
     </ClCompile>
     <ClCompile Include="LearnOpenGL\LearnOpenGL\src\engine\Logger.cpp">
+      <Filter>engine</Filter>
+    </ClCompile>
+    <ClCompile Include="LearnOpenGL\LearnOpenGL\src\engine\Mesh.cpp">
+      <Filter>engine</Filter>
+    </ClCompile>
+    <ClCompile Include="LearnOpenGL\LearnOpenGL\src\engine\Shader.cpp">
+      <Filter>engine</Filter>
+    </ClCompile>
+    <ClCompile Include="LearnOpenGL\LearnOpenGL\src\engine\Texture.cpp">
       <Filter>engine</Filter>
     </ClCompile>
     <ClCompile Include="LearnOpenGL\LearnOpenGL\src\engine\Window.cpp">
