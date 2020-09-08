@@ -1,6 +1,7 @@
 #include "pch.h"
 #include "Object.h"
 #include "Graphics.h"
+#include "Component.h"
 #include <glm/gtc/matrix_transform.hpp>
 
 namespace Engine
@@ -9,6 +10,18 @@ namespace Engine
         : m_graphics(graphics)
     {
     }
+
+
+
+
+    Object::~Object()
+    {   
+        //Delete all the components.
+        for (Component *cmp : m_components)
+            delete cmp;
+    }
+
+
 
 
     void Object::Render(glm::mat4 &view, glm::mat4 &proj)
@@ -28,8 +41,33 @@ namespace Engine
         //Scale.
         model = glm::scale(model, this->transform.scale);
 
+
+        //Run all the Components.
+        for (Component *cmp : m_components)
+        {   
+            //Call the onStart method.
+            if (cmp->m_onStart)
+            {
+                cmp->OnStart();
+                cmp->m_onStart = false;
+            }
+
+            //Call Update.
+            else
+                cmp->OnUpdate();
+        }
+
+
         //Render the graphics.
         if (this->m_graphics)
             this->m_graphics->Render(model, view, proj);
+    }
+
+
+
+    void Object::AddComponent(Component *cmp)
+    {
+        cmp->self = this;
+        this->m_components.push_back(cmp);
     }
 }

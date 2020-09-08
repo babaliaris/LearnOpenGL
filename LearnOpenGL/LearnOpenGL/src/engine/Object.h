@@ -37,15 +37,19 @@ namespace Engine
 
         //Constructor.
         Object(Graphics *graphics = nullptr);
+        ~Object();
 
         //Render Method.
         void Render(glm::mat4 &view, glm::mat4 &proj);
+
+        //Add Component.
+        void AddComponent(Component *comp);
 
 
 
         private:
         Graphics *m_graphics;
-        //std::vector<Component *> m_components;
+        std::vector<Component *> m_components;
     };
 }
 

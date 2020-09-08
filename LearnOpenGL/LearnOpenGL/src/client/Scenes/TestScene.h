@@ -1,6 +1,6 @@
 #ifndef ENGINE_TEST_SCENE_H
 #define ENGINE_TEST_SCENE_H
-#include "../Scene.h"
+#include "../../engine/Scene.h"
 
 namespace Engine
 {
