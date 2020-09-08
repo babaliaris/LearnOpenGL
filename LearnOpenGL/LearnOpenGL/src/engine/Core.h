@@ -30,7 +30,7 @@
 
 //Visual Studio.
 #ifdef _MSC_BUILD
-    #define RUNTIME_DIR ""
+    #define RUNTIME_DIR "LearnOpenGL/LearnOpenGL/"
 
 //Other Environments.
 #else
