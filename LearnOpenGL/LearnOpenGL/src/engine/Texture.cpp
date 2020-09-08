@@ -1,13 +1,14 @@
 #include "pch.h"
 #include "Core.h"
 #include "Texture.h"
+#include "Application.h"
 #include <stb_image.h>
 #include <glad/glad.h>
 
 namespace Engine
 {
     Texture::Texture(const char *path, const char *uniform_name, bool flip)
-        : m_id(0), m_path(path), m_uniform_name(uniform_name)
+        : m_id(0), m_countRef(1), m_path(path), m_uniform_name(uniform_name)
     {
 
         //Flipt the image vertically.
@@ -72,12 +73,16 @@ namespace Engine
 
             //Unbind the Texture.
             glBindTexture(GL_TEXTURE_2D, 0);
+
+            LOG_INFO("[Texture: {0}] => Created!", this->m_path);
         }
     }
 
 
     Texture::~Texture()
     {
+        LOG_INFO("[Texture: {0}] => Deleted!", this->m_path);
+
         this->Unbind();
         glDeleteTextures(1, &m_id);
     }

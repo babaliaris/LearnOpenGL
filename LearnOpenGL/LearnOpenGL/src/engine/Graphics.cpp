@@ -12,6 +12,8 @@ namespace Engine
 
     Graphics::~Graphics()
     {
+        LOG_INFO("[Graphics: {0}] => Deleted!", this->m_name);
+
         for (Mesh *mesh : m_meshes)
             delete mesh;
 

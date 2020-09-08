@@ -3,6 +3,8 @@
 #include "Engine.h"
 #include <iostream>
 
+#include "engine/Scenes/TestScene.h"
+
 
 class MyLayer : public Engine::Layer
 {
@@ -58,6 +60,12 @@ class LearnOpenGL : public Engine::Application
     ~LearnOpenGL()
     {
 
+    }
+
+
+    Engine::Scene *EntryPoint() const override
+    {
+        return new Engine::TestScene();
     }
 };
 

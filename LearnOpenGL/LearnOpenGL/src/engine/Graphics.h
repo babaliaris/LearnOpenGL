@@ -16,8 +16,12 @@
 namespace Engine
 {
 
+    class Scene;
+
     class Graphics
     {
+        friend class Scene;
+
         public:
         std::vector<Texture *> __engine_graphics_creator_textures__;
 
@@ -35,6 +39,7 @@ namespace Engine
         inline std::string& GetName() { return m_name; }
 
         private:
+        unsigned int m_refCounter = 1;
         std::string m_name;
         Shader *m_shader;
         std::vector<Mesh *> m_meshes;
@@ -46,7 +51,9 @@ namespace Engine
 
 #define CREATE_TEXTURE(path){\
 \
-    __engine_graphics_creator_textures__.push_back(new Texture(path));\
+    Application &app = Application::Get();\
+    Texture *texture = app.CreateTexture(path);\
+    __engine_graphics_creator_textures__.push_back(texture);\
 \
 }
 

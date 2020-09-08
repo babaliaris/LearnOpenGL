@@ -10,12 +10,20 @@ namespace Engine
 
 int main(void)
 {
+
+    //Create the App object.
     Engine::Application *app = Engine::createApp();
 
+    //Load the first scene.
+    app->LoadScene(app->EntryPoint());
+
+    //Run the APP.
     app->Run();
 
+    //Delete the APP.
     delete app;
 
+    //Return end terminate this process.
     return 0;
 }
 #endif

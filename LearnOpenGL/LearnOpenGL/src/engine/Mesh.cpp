@@ -1,4 +1,5 @@
 #include <pch.h>
+#include "Core.h"
 #include "Mesh.h"
 #include "Shader.h"
 #include "Texture.h"
@@ -91,7 +92,16 @@ Engine::Mesh::~Mesh()
 
     //Delete all the textures.
     for (Texture *texture : m_textures)
-        delete texture;
+    {
+        //Reduce the reference counter.
+        texture->m_countRef--;
+        
+        //Delete the Texture if the ref count is 0.
+        if (texture->m_countRef == 0)
+        {
+            delete texture;
+        }
+    }
 
     //Unbind everything.
     glBindVertexArray(0);

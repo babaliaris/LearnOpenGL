@@ -4,8 +4,9 @@
 #include "Layer.h"
 #include "Window.h"
 #include "Events.h"
-
-#include "Graphics/cube.h"
+#include "Texture.h"
+#include "Scene.h"
+#include "Layers/GameLayer.h"
 
 #include <GLFW/glfw3.h>
 
@@ -36,6 +37,9 @@ Engine::Application::Application()
 
     //Set User Pointer.
     glfwSetWindowUserPointer( m_window->m_GLFWwindow, (void *) (&m_window->m_WindowData) );
+
+    //Push the game layer.
+    this->PushLayer(new GameLayer());
 }
 
 
@@ -51,32 +55,24 @@ Engine::Application::~Application()
 void Engine::Application::Run()
 {
 
-    glm::mat4 proj = glm::perspective(45.0f, (float)m_window->GetWidth() / m_window->GetHeight(), 0.1f, 100.0f);
-    glm::mat4 view = glm::mat4(1.0f);
-
-    glm::mat4 model = glm::mat4(1.0f);
-    model = glm::translate(model, glm::vec3(0.0f, 0.0f, -2.0f));
-    
-    Cube cube;
-
     glClearColor(0,0,0,1);
     while (m_running)
     {
         glClear(GL_COLOR_BUFFER_BIT | GL_DEPTH_BUFFER_BIT);
         
-        /*
+        
         //Run all the enabled layers.
         for (Layer *layer : m_layers)
         {
             if (!layer->m_disabled)
                 layer->OnUpdate();
         }
-        */
-
-       cube.Render(model, view, proj);
 
         m_window->Update();
     }
+
+    //Delete the scene.
+    delete m_scene;
 }
 
 
@@ -95,6 +91,45 @@ void Engine::Application::PushLayer(Layer *layer)
 
     layer->OnAttach();
 }
+
+
+
+
+void Engine::Application::LoadScene(Scene* new_scene)
+{
+    if (m_scene)
+        delete m_scene;
+
+    m_scene = new_scene;
+}
+
+
+
+
+Engine::Texture* Engine::Application::CreateTexture(const std::string &path, const std::string &unifrom_name, bool flip)
+{
+
+    //Check if the texture already exists.
+    for (Texture *text : m_textures)
+    {
+        //Found.
+        if (text->m_path == path)
+        {
+            text->m_countRef++;
+            return text;
+        }
+    }
+
+    //Create a new Texture.
+    Texture *texture = new Texture(path.c_str(), unifrom_name.c_str(), flip);
+
+    //Push back the texture stuct the APP vector.
+    this->m_textures.push_back(texture);
+
+    //Return the new created Texture.
+    return texture;
+}
+
 
 
 
