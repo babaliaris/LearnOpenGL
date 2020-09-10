@@ -10,6 +10,9 @@
 #include "engine/Object.h"
 #include "engine/Scene.h"
 #include "engine/Component.h"
+#include "engine/Input.h"
+#include <glad/glad.h>
+#include <GLFW/glfw3.h>
 
 
 //--------------------ENTRY POINT--------------------//

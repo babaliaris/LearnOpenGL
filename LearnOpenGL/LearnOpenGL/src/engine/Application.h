@@ -13,6 +13,7 @@ namespace Engine
     class Texture;
     class Scene;
     class GameLayer;
+    class Input;
 
     void HelperEventCallback(void *context, Engine::Event &e);
     //-----Forward Declarations-----//
@@ -53,6 +54,7 @@ namespace Engine
 
         //-------------Inline Methods-------------//
         static inline Application& Get() { return *m_instance; }
+        inline float GetDeltaTime() const { return m_deltaTime; }
 
 
 
@@ -69,6 +71,8 @@ namespace Engine
         Scene *m_scene = nullptr;
 
         bool m_running = true;
+
+        float m_deltaTime = 0;
 
         void EventsCallback(Event &e);
 

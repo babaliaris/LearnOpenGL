@@ -7,6 +7,7 @@
 #include "Texture.h"
 #include "Scene.h"
 #include "Layers/GameLayer.h"
+#include "Input.h"
 
 #include <GLFW/glfw3.h>
 
@@ -55,9 +56,17 @@ Engine::Application::~Application()
 void Engine::Application::Run()
 {
 
+    float current_time, prev_time = 0;
+
     glClearColor(0,0,0,1);
     while (m_running)
     {
+        //Calculate delta time.
+        current_time    = (float)glfwGetTime();
+        m_deltaTime     = current_time - prev_time;
+        prev_time       = current_time;
+
+
         glClear(GL_COLOR_BUFFER_BIT | GL_DEPTH_BUFFER_BIT);
         
         
@@ -68,6 +77,11 @@ void Engine::Application::Run()
                 layer->OnUpdate();
         }
 
+        //Reset the scrolling variables.
+        Input::s_scrollX = 0;
+        Input::s_scrollY = 0;
+
+        //Update the window.
         m_window->Update();
     }
 

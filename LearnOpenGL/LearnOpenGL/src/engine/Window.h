@@ -10,6 +10,7 @@ namespace Engine
     //Forward Declarations//
     class Application;
     class Event;
+    class Input;
     //Forward Declarations//
 
 
@@ -29,6 +30,8 @@ namespace Engine
     class Window
     {
         friend class Application;
+        friend class Input;
+        friend class GameLayer;
 
         public:
 

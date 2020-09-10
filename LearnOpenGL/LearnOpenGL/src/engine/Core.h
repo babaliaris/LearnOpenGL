@@ -7,7 +7,7 @@
     if (!(x))\
     {\
         std::stringstream ss;\
-        ss << "Assertion Failed: {0}\n\t\t\t\t\t   In File: {1}\n\t\t\t\t\t   At Line: {2}\n\t\t\t\t\t   Message: " << #formatter;\
+        ss << "Assertion Failed: {0}\n\t\t\t\t\t   In File: {1}\n\t\t\t\t\t   At Line: {2}\n\t\t\t\t\t   Message: " << formatter;\
         LOG_ERROR(ss.str(), #x, __FILE__, __LINE__, __VA_ARGS__);\
         abort();\
     }\

@@ -39,7 +39,7 @@ namespace Engine
         //Initialize the ViewPort.
         glViewport(0, 0, width, height);
 
-        //eNABLE Depth Test.
+        //Enable Depth Test.
         glEnable(GL_DEPTH_TEST);
 
         //Bind Events.
