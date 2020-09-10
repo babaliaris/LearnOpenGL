@@ -11,6 +11,9 @@
 #include "engine/Scene.h"
 #include "engine/Component.h"
 #include "engine/Input.h"
+#include "engine/Graphics/cube.h"
+#include "engine/Graphics/Model.h"
+#include "engine/Camera.h"
 #include <glad/glad.h>
 #include <GLFW/glfw3.h>
 

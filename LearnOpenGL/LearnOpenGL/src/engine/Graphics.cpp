@@ -3,7 +3,7 @@
 
 namespace Engine
 {
-    Graphics::Graphics(const char *name, const char *vert_path, const char *frag_path)
+    Graphics::Graphics(const char *name, const char*path, const char *vert_path, const char *frag_path)
         : m_name(name), m_shader(new Shader(vert_path, frag_path))
     {
     }

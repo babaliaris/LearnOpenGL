@@ -5,7 +5,7 @@
 #include "Texture.h"
 #include <glad/glad.h>
 
-Engine::Mesh::Mesh(std::vector<Vertex *> &vertices, std::vector<unsigned int> &indices, std::vector<Texture *> &textures)
+Engine::Mesh::Mesh(std::vector<Vertex> &vertices, std::vector<unsigned int> &indices, std::vector<Texture *> &textures)
     : m_vao(0), m_vbo(0), m_ebo(0), m_indices(indices.size()), m_vertices(vertices.size()), m_textures(textures)
 {
 
@@ -18,10 +18,11 @@ Engine::Mesh::Mesh(std::vector<Vertex *> &vertices, std::vector<unsigned int> &i
 
     //Upload the VBO data to the GPU.
     glBindBuffer(GL_ARRAY_BUFFER, m_vbo);
-    glBufferData(GL_ARRAY_BUFFER, sizeof(Vertex) * vertices.size(), (const void *)&vertices[0], GL_STATIC_DRAW);
+    glBufferData(GL_ARRAY_BUFFER, sizeof(Vertex) * vertices.size(), &vertices[0], GL_STATIC_DRAW);
 
+    
     //Positions.
-    glVertexAttribPointer(0, 3, GL_FLOAT, GL_FALSE, sizeof(Vertex), (const void *)offsetof(Vertex, position));
+    glVertexAttribPointer(0, 3, GL_FLOAT, GL_FALSE, sizeof(Vertex), (const void *)0);
     glEnableVertexAttribArray(0);
 
     //Normals.
@@ -33,13 +34,15 @@ Engine::Mesh::Mesh(std::vector<Vertex *> &vertices, std::vector<unsigned int> &i
     glVertexAttribPointer(2, 2, GL_FLOAT, GL_FALSE, sizeof(Vertex), (const void *)offsetof(Vertex, textCoords));
     glEnableVertexAttribArray(2);
 
+    
     //Generate and Upload the VBO data to the GPU.
     if (indices.size() > 0)
     {
         glGenBuffers(1, &m_ebo);
         glBindBuffer(GL_ELEMENT_ARRAY_BUFFER, m_ebo);
-        glBufferData(GL_ELEMENT_ARRAY_BUFFER, sizeof(unsigned int) * indices.size(), (const void *)&indices[0], GL_STATIC_DRAW);
+        glBufferData(GL_ELEMENT_ARRAY_BUFFER, sizeof(unsigned int) * indices.size(), &indices[0], GL_STATIC_DRAW);
     }
+    
 
     //Unbind everything.
     glBindVertexArray(0);

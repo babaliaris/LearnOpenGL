@@ -3,8 +3,8 @@
 
 namespace Engine
 {
-    Cube::Cube(const std::string &name)
-        : Graphics(name.c_str(), "src/engine/Shaders/test.vert", "src/engine/Shaders/test.frag")
+    Cube::Cube(const std::string &name, const std::string& path)
+        : Graphics(name.c_str(), path.c_str(), "src/engine/Shaders/test.vert", "src/engine/Shaders/test.frag")
     {
         std::vector<float> vertices = {
 

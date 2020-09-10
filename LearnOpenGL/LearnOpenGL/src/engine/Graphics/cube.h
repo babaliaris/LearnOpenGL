@@ -7,7 +7,7 @@ namespace Engine
     class Cube : public Graphics
     {
         public:
-        Cube(const std::string &name);
+        Cube(const std::string &name, const std::string& path);
     };
 }
 

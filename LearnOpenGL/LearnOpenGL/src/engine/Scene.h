@@ -27,7 +27,7 @@ namespace Engine
 
         //Create Graphics.
         template<typename T>
-        Graphics *CreateGraphics(const std::string &name)
+        Graphics *CreateGraphics(const std::string &name, const std::string &path="")
         {
             //Search if the graphics object already exists.
             for (Graphics *graphics : m_graphics)
@@ -40,8 +40,7 @@ namespace Engine
                 }
             }
 
-            //Create a new graphics object.
-            Graphics *new_graphics = new T(name);
+            Graphics* new_graphics = new T(name, path);
 
             //Push the new graphics into the vector.
             this->m_graphics.push_back(new_graphics);
@@ -60,5 +59,9 @@ namespace Engine
 
 #define CREATE_OBJECT(graphics_class)\
 this->CreateObject( this->CreateGraphics<graphics_class>(#graphics_class) );\
+
+
+#define CREATE_MODEL(graphics_class, model_path)\
+this->CreateObject( this->CreateGraphics<graphics_class>(#graphics_class, model_path) );\
 
 #endif

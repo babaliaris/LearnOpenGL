@@ -26,7 +26,7 @@ namespace Engine
         std::vector<Texture *> __engine_graphics_creator_textures__;
 
         //Constructors-Deconstructor.
-        Graphics(const char *name, const char *vert_path, const char *frag_path);
+        Graphics(const char *name, const char *path, const char *vert_path, const char *frag_path);
         virtual ~Graphics();
 
         //Render.
@@ -62,6 +62,15 @@ namespace Engine
 \
         __VA_ARGS__\
         Mesh *mesh = new Mesh(vertices, __engine_graphics_creator_textures__);\
+        this->AddMesh(mesh);\
+        __engine_graphics_creator_textures__.clear();\
+\
+}
+
+
+#define CREATE_MODEL_MESH(vertices, indices, textures){\
+\
+        Mesh *mesh = new Mesh(vertices, indices, textures);\
         this->AddMesh(mesh);\
 \
 }
