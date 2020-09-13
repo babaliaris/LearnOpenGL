@@ -30,6 +30,7 @@ namespace Engine
 
 		inline static Camera& Get() { return *s_Instance; }
 		inline float GetSpeed() const { return m_speed; }
+		inline glm::vec3& GetPos() { return m_position; }
 
 		inline void SetSensitivity(float value) { m_sensitivity = value; }
 		inline void SetSpeedy(float value) { m_speed = value; }

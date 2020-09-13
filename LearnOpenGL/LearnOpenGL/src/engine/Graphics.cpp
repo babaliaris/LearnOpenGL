@@ -1,10 +1,11 @@
 #include "pch.h"
 #include "Graphics.h"
+#include "Application.h"
 
 namespace Engine
 {
     Graphics::Graphics(const char *name, const char*path, const char *vert_path, const char *frag_path)
-        : m_name(name), m_shader(new Shader(vert_path, frag_path))
+        : m_name(name), m_shader(Application::Get().CreateShader(vert_path, frag_path))
     {
     }
 
@@ -17,7 +18,10 @@ namespace Engine
         for (Mesh *mesh : m_meshes)
             delete mesh;
 
-        delete m_shader;
+        m_shader->m_RefCounter--;
+
+        if (m_shader->m_RefCounter == 0)
+            delete m_shader;
     }
 
 

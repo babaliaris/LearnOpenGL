@@ -21,6 +21,7 @@ namespace Engine
     class Graphics
     {
         friend class Scene;
+        friend class Object;
 
         public:
         std::vector<Texture *> __engine_graphics_creator_textures__;
@@ -49,10 +50,10 @@ namespace Engine
 
 
 
-#define CREATE_TEXTURE(path){\
+#define CREATE_TEXTURE(path, type){\
 \
     Application &app = Application::Get();\
-    Texture *texture = app.CreateTexture(path);\
+    Texture *texture = app.CreateTexture(path, type);\
     __engine_graphics_creator_textures__.push_back(texture);\
 \
 }

@@ -1,6 +1,8 @@
 #include "pch.h"
 #include "Scene.h"
 #include "Object.h"
+#include "DirectionalLight.h"
+#include "PointLight.h"
 #include "Graphics.h"
 
 
@@ -39,6 +41,20 @@ namespace Engine
     Engine::Object *Scene::CreateObject(Graphics *graphics)
     {
         Object *obj = new Object(graphics);
+        this->AddObject(obj);
+        return obj;
+    }
+
+    Object* Scene::CreateDirectionalLight(Graphics* graphics)
+    {
+        Object* obj = new DirectionalLight(graphics);
+        this->AddObject(obj);
+        return obj;
+    }
+
+    Object* Scene::CreatePointLight(Graphics* graphics)
+    {
+        Object* obj = new PointLight(graphics);
         this->AddObject(obj);
         return obj;
     }

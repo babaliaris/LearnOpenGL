@@ -25,6 +25,12 @@ namespace Engine
         //Create Object.
         Object *CreateObject(Graphics *graphics=nullptr);
 
+        //Create Object.
+        Object* CreateDirectionalLight(Graphics* graphics = nullptr);
+
+        //Create Object.
+        Object* CreatePointLight(Graphics* graphics = nullptr);
+
         //Create Graphics.
         template<typename T>
         Graphics *CreateGraphics(const std::string &name, const std::string &path="")
@@ -59,6 +65,14 @@ namespace Engine
 
 #define CREATE_OBJECT(graphics_class)\
 this->CreateObject( this->CreateGraphics<graphics_class>(#graphics_class) );\
+
+
+#define CREATE_DIRECTIONAL_LIGHT(graphics_class)\
+this->CreateDirectionalLight( this->CreateGraphics<graphics_class>(#graphics_class) );\
+
+
+#define CREATE_POINT_LIGHT(graphics_class)\
+this->CreatePointLight( this->CreateGraphics<graphics_class>(#graphics_class) );\
 
 
 #define CREATE_MODEL(graphics_class, model_path)\

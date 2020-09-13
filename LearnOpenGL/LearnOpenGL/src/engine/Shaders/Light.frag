@@ -8,5 +8,5 @@ out vec4 fragColor;
 
 void main()
 {
-    fragColor = texture(diffuse, textCoord);
+    fragColor = vec4(1.0, 1.0, 1.0, 1.0);
 }

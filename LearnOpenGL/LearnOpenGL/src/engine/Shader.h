@@ -7,6 +7,9 @@ namespace Engine
 {
     class Shader
     {
+        friend class Application;
+        friend class Graphics;
+
         public:
 
         Shader(const char *v_path, const char *f_path);
@@ -27,6 +30,8 @@ namespace Engine
         unsigned int CompileShader(int type, std::string &path);
 
         int GetLocation(const char *name);
+
+        unsigned int m_RefCounter = 1;
     };
 }
 

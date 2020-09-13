@@ -57,7 +57,6 @@ namespace Engine
                 cmp->OnUpdate();
         }
 
-
         //Render the graphics.
         if (this->m_graphics)
             this->m_graphics->Render(model, view, proj);
@@ -69,5 +68,13 @@ namespace Engine
     {
         cmp->self = this;
         this->m_components.push_back(cmp);
+    }
+
+
+
+
+    Shader* Object::GetShader()
+    {
+        return m_graphics->m_shader;
     }
 }

@@ -4,7 +4,7 @@
 namespace Engine
 {
     Cube::Cube(const std::string &name, const std::string& path)
-        : Graphics(name.c_str(), path.c_str(), "src/engine/Shaders/test.vert", "src/engine/Shaders/test.frag")
+        : Graphics(name.c_str(), path.c_str(), "src/engine/Shaders/Model.vert", "src/engine/Shaders/Model.frag")
     {
         std::vector<float> vertices = {
 
@@ -57,7 +57,8 @@ namespace Engine
         CREATE_MESH
         (
             vertices,
-            CREATE_TEXTURE("Assets/container.jpg")
+            CREATE_TEXTURE("Assets/container2.png", "diffuse")
+            CREATE_TEXTURE("Assets/specular.png", "specular")
         )
     }
 }

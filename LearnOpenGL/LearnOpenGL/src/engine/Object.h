@@ -9,6 +9,7 @@ namespace Engine
     class Graphics;
     class Component;
     class Scene;
+    class Shader;
 
     struct Transform
     {
@@ -27,6 +28,7 @@ namespace Engine
         }
     };
 
+
     class Object
     {
         friend class Scene;
@@ -37,13 +39,15 @@ namespace Engine
 
         //Constructor.
         Object(Graphics *graphics = nullptr);
-        ~Object();
+        virtual ~Object();
 
         //Render Method.
-        void Render(glm::mat4 &view, glm::mat4 &proj);
+        virtual void Render(glm::mat4 &view, glm::mat4 &proj);
 
         //Add Component.
         void AddComponent(Component *comp);
+
+        Shader* GetShader();
 
 
 

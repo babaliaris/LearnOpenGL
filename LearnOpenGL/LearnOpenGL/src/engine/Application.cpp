@@ -8,6 +8,7 @@
 #include "Scene.h"
 #include "Layers/GameLayer.h"
 #include "Input.h"
+#include "Shader.h"
 
 #include <GLFW/glfw3.h>
 
@@ -142,6 +143,33 @@ Engine::Texture* Engine::Application::CreateTexture(const std::string &path, con
 
     //Return the new created Texture.
     return texture;
+}
+
+
+
+
+
+Engine::Shader* Engine::Application::CreateShader(const std::string& vert_path, const std::string& frag_path)
+{
+    //Check if the shader already exists.
+    for (Shader* shader : m_shaders)
+    {
+        //Found.
+        if (vert_path == shader->m_vertex_path && frag_path == shader->m_fragment_path)
+        {
+            shader->m_RefCounter++;
+            return shader;
+        }
+    }
+
+    //Create a new Shader.
+    Shader* new_shader = new Shader(vert_path.c_str(), frag_path.c_str());
+
+    //Push back the shader stuct the APP vector.
+    this->m_shaders.push_back(new_shader);
+
+    //Return the new created Texture.
+    return new_shader;
 }
 
 

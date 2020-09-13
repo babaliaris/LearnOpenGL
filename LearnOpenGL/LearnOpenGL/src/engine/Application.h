@@ -14,6 +14,7 @@ namespace Engine
     class Scene;
     class GameLayer;
     class Input;
+    class Shader;
 
     void HelperEventCallback(void *context, Engine::Event &e);
     //-----Forward Declarations-----//
@@ -52,6 +53,9 @@ namespace Engine
         //Create Texture.
         Texture* CreateTexture(const std::string &path, const std::string &unifrom_name="diffuse", bool flip=true);
 
+        //Create Shader.
+        Shader* CreateShader(const std::string& vert_path, const std::string& frag_path);
+
         //-------------Inline Methods-------------//
         static inline Application& Get() { return *m_instance; }
         inline float GetDeltaTime() const { return m_deltaTime; }
@@ -65,6 +69,8 @@ namespace Engine
         std::vector<Layer*> m_layers;
 
         std::vector<Texture *> m_textures;
+
+        std::vector<Shader *> m_shaders;
 
         Window *m_window;
 
