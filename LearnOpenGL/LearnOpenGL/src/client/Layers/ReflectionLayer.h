@@ -185,6 +185,8 @@ public:
         //Create the Projection (Perspective) Matrix.
         m_proj = glm::perspective(glm::radians(45.0f), (float)m_window->GetWidth() / m_window->GetHeight(), 0.1f, 100.0f);
 
+        LOG_INFO("{0}  , {1}", m_window->GetWidth(), m_window->GetHeight());
+
         glActiveTexture(GL_TEXTURE0);
         glBindTexture(GL_TEXTURE_CUBE_MAP, m_cubemap);
 

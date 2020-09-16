@@ -97,6 +97,16 @@ public:
         //Create the Projection (Perspective) Matrix.
         m_proj = glm::perspective(glm::radians(45.0f), (float)m_window->GetWidth() / m_window->GetHeight(), 0.1f, 100.0f);
 
+        //Resize the Stencil and Depth RenderBuffer.
+        glBindRenderbuffer(GL_RENDERBUFFER, m_depthStencilRenderBuffer);
+        glRenderbufferStorage(GL_RENDERBUFFER, GL_DEPTH24_STENCIL8, m_window->GetWidth(), m_window->GetHeight());
+        glBindRenderbuffer(GL_RENDERBUFFER, 0);
+
+        //Resize the Color Texture of the framebuffer.
+        glBindTexture(GL_TEXTURE_2D, m_colorTexture);
+        glTexImage2D(GL_TEXTURE_2D, 0, GL_RGB, m_window->GetWidth(), m_window->GetHeight(), 0, GL_RGB, GL_UNSIGNED_BYTE, NULL);
+        glBindTexture(GL_TEXTURE_2D, 0);
+
         glEnable(GL_DEPTH_TEST);
         glStencilMask(0xFF);
         glStencilFunc(GL_ALWAYS, 1, 0xFF);

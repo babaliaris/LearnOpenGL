@@ -169,6 +169,11 @@ namespace Engine
         {
             WindowData *data = (WindowData *)glfwGetWindowUserPointer(window);
 
+            data->m_width  = x;
+            data->m_height = y;
+
+            glViewport(0, 0, x, y);
+
             WindowResizedEvent e(x, y);
 
             data->EventCallback(data->m_context, e);

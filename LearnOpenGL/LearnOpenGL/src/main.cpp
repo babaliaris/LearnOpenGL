@@ -19,10 +19,10 @@ class LearnOpenGL : public Engine::Application
     LearnOpenGL()
     {
         //PushLayer(new StencilLayer());
-        //PushLayer(new PostProcessLayer());
+        PushLayer(new PostProcessLayer());
         //PushLayer(new CubemapLayer());
         //PushLayer(new ReflectionLayer());
-        PushLayer(new AdvancedBuffersLayer());
+        //PushLayer(new AdvancedBuffersLayer());
     }
 
 
