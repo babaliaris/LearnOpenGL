@@ -3,36 +3,13 @@
 #include "Engine.h"
 #include <iostream>
 
-#include "client/Scenes/TestScene.h"
+#include "client/Scenes/EmptyScene.h"
 
-
-class MyLayer : public Engine::Layer
-{
-    public:
-
-    MyLayer()
-    {
-
-    }
-
-    ~MyLayer()
-    {
-
-    }
-
-    void OnAttach() override
-    {
-    }
-
-    void OnUpdate() override
-    {
-    }
-
-    
-    void OnEvent(Engine::Event &e)
-    {
-    }
-};
+#include "client/Layers/StencilLayer.h"
+#include "client/Layers/PostProcess.h"
+#include "client/Layers/CubemapLayer.h"
+#include "client/Layers/ReflectionLayer.h"
+#include "client/Layers/AdvancedBuffersLayer.h"
 
 
 class LearnOpenGL : public Engine::Application
@@ -41,8 +18,11 @@ class LearnOpenGL : public Engine::Application
     
     LearnOpenGL()
     {
-        Engine::Layer *layer = new MyLayer();
-        PushLayer(layer);
+        //PushLayer(new StencilLayer());
+        //PushLayer(new PostProcessLayer());
+        //PushLayer(new CubemapLayer());
+        //PushLayer(new ReflectionLayer());
+        PushLayer(new AdvancedBuffersLayer());
     }
 
 
@@ -54,7 +34,7 @@ class LearnOpenGL : public Engine::Application
 
     Engine::Scene *EntryPoint() const override
     {
-        return new Engine::TestScene();
+        return new Engine::EmptyScene();
     }
 };
 

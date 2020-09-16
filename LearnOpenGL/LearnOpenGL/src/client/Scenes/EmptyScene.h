@@ -4,10 +4,10 @@
 
 namespace Engine
 {
-    class TestScene : public Scene
+    class EmptyScene : public Scene
     {
         public:
-        TestScene(const std::string &name="TestScene");
+            EmptyScene(const std::string &name="EmptyScene");
     };
 }
 

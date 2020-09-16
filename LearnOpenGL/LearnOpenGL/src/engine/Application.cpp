@@ -68,7 +68,7 @@ void Engine::Application::Run()
         prev_time       = current_time;
 
 
-        glClear(GL_COLOR_BUFFER_BIT | GL_DEPTH_BUFFER_BIT);
+        glClear(GL_COLOR_BUFFER_BIT | GL_DEPTH_BUFFER_BIT | GL_STENCIL_BUFFER_BIT);
         
         
         //Run all the enabled layers.

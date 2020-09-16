@@ -41,6 +41,7 @@ namespace Engine
 
         //Enable Depth Test.
         glEnable(GL_DEPTH_TEST);
+        glEnable(GL_STENCIL_TEST);
 
         //Bind Events.
         this->BindEvents();
